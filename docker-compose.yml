@@ -15,8 +15,8 @@ services:
       POSTGRES_DB: postgres
 
   pact_broker:
-    # image: pactfoundation/pact-broker
-    build: .
+    image: pactfoundation/pact-broker
+    # build: .
     ports:
       - "9292:9292"
     depends_on:
