@@ -27,6 +27,8 @@ services:
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
       PACT_BROKER_PORT: "9292"
+      PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
+      PACT_BROKER_BASIC_AUTH_PASSWORD: Password1
 
   # Nginx is not necessary, but demonstrates how
   # one might use a reverse proxy in front of the broker,
