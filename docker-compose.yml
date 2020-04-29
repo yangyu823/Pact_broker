@@ -26,8 +26,8 @@ services:
       PACT_BROKER_DATABASE_PASSWORD: password
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
-      PACT_BROKER_WEBHOOK_HOST_WHITELIST: "github.com", "travis.org"
-      PACT_BROKER_WEBHOOK_SCHEME_WHITELIST: "http", "https"
+      PACT_BROKER_WEBHOOK_HOST_WHITELIST: "github.com" "travis.org"
+      PACT_BROKER_WEBHOOK_SCHEME_WHITELIST: "http" "https"
       PACT_BROKER_PORT: "9292"
       PACT_BROKER_BASE_URL: "https://yyan.io"
       PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
