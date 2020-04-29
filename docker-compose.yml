@@ -13,10 +13,10 @@ services:
       POSTGRES_DB: postgres
 
   pact_broker:
-    image: pactfoundation/pact-broker
+    image: dius/pact-broker
     # build: .
-    ports:
-      - "9292:9292"
+#    ports:
+#      - "9292:9292"
     depends_on:
       - postgres
     environment:
@@ -24,6 +24,7 @@ services:
       PACT_BROKER_DATABASE_PASSWORD: password
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
+      PACT_BROKER_LOG_LEVEL: INFO
 #      PACT_BROKER_PORT: "9292"
       PACT_BROKER_BASE_URL: "https://yyan.io"
       PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
