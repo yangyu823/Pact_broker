@@ -16,7 +16,7 @@ services:
     image: dius/pact-broker
     # build: .
     ports:
-      - "80:80"
+      - "9292:443"
     depends_on:
       - postgres
     environment:
