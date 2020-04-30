@@ -1,48 +1,59 @@
 version: '3'
 
 services:
-#  postgres:
-#    image: postgres
-#    healthcheck:
-#      test: psql postgres --command "select 1" -U postgres
-#    ports:
-#      - "5432:5432"
-#    environment:
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: password
-#      POSTGRES_DB: postgres
-#
-#  pact-broker:
-#    image: dius/pact-broker
-#    # build: .
-##    ports:
-##      - "80:80"
-#    depends_on:
-#      - postgres
-#    environment:
-#      PACT_BROKER_DATABASE_USERNAME: postgres
-#      PACT_BROKER_DATABASE_PASSWORD: password
-#      PACT_BROKER_DATABASE_HOST: postgres
-#      PACT_BROKER_DATABASE_NAME: postgres
-#      PACT_BROKER_LOG_LEVEL: INFO
-##      PACT_BROKER_PORT: "9292"
-#      PACT_BROKER_BASE_URL: "https://yyan.io"
-#      PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
-#      PACT_BROKER_BASIC_AUTH_PASSWORD: Password1
-
-  nginx:
-    image: nginx:1.15-alpine
-    volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+  postgres:
+    image: postgres
+    healthcheck:
+      test: psql postgres --command "select 1" -U postgres
     ports:
-      - "80:80"
-      - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+
+  pact-broker:
+    image: dius/pact-broker
+    # build: .
+#    ports:
+#      - "80:80"
+    depends_on:
+      - postgres
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: postgres
+      PACT_BROKER_DATABASE_PASSWORD: password
+      PACT_BROKER_DATABASE_HOST: postgres
+      PACT_BROKER_DATABASE_NAME: postgres
+      PACT_BROKER_LOG_LEVEL: INFO
+#      PACT_BROKER_PORT: "9292"
+      PACT_BROKER_BASE_URL: "https://yyan.io"
+      PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
+      PACT_BROKER_BASIC_AUTH_PASSWORD: Password1
+
+#  can-i-deploy:
+#    image: pactfoundation/pact-cli
+#    depends_on:
+#      - pact-broker
+#    environment:
+#      PACT_BROKER_BASE_URL: https://yyan.io
+#      SSL_CERT_FILE: /tmp/cacert.crt
+#    volumes:
+#      - ${PWD}/ssl/nginx-selfsigned.crt:/tmp/cacert.crt
+#    command: broker can-i-deploy --pacticipant "Example App" --latest
+
+#  nginx:
+#    image: nginx:1.15-alpine
+#    volumes:
+#      - ./data/nginx:/etc/nginx/conf.d
+#      - ./data/certbot/conf:/etc/letsencrypt
+#      - ./data/certbot/www:/var/www/certbot
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+#  certbot:
+#    image: certbot/certbot
+#    volumes:
+#      - ./data/certbot/conf:/etc/letsencrypt
+#      - ./data/certbot/www:/var/www/certbot
+#    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
