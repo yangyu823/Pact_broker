@@ -26,7 +26,7 @@ services:
       PACT_BROKER_DATABASE_NAME: postgres
       PACT_BROKER_LOG_LEVEL: INFO
 #      PACT_BROKER_PORT: "9292"
-      PACT_BROKER_BASE_URL: "https://yyan.io"
+#      PACT_BROKER_BASE_URL: "https://yyan.io"
       PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
       PACT_BROKER_BASIC_AUTH_PASSWORD: Password1
 
