@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
 
-  pact_broker:
+  pact-broker:
     image: dius/pact-broker
     # build: .
 #    ports:
