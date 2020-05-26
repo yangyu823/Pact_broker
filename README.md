@@ -37,3 +37,30 @@ Feel free to post questions in the comment section of the [accompanying guide](h
 
 ## License
 All code in this repository is licensed under the terms of the `MIT License`. For further information please refer to the `LICENSE` file.
+
+
+```json
+{
+  "events": [{
+    "name": "contract_content_changed"
+  }],
+  "request": {
+    "method": "POST",
+    "url": "https://api.travis-ci.com/repo/yangyu823%2Fpact-workshop-js-v1/requests",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Travis-API-Version": "3",
+      "Authorization": "token Aw4s5fnNJr9hOAq27DCTpQ"
+    },
+    "body": {
+      "request": {
+        "message": "Triggered by changed pact for ${pactbroker.consumerName} version ${pactbroker.consumerVersionNumber}",
+        "branch":"provider"
+      }
+    }
+  }
+}
+
+
+```
