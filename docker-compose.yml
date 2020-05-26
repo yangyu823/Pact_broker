@@ -29,16 +29,18 @@ services:
       PACT_BROKER_BASIC_AUTH_USERNAME: CSPUsr2
       PACT_BROKER_BASIC_AUTH_PASSWORD: Password1
 
-#  can-i-deploy:
-#    image: pactfoundation/pact-cli
-#    depends_on:
-#      - pact-broker
-#    environment:
-#      PACT_BROKER_BASE_URL: https://yyan.io
+  can-i-deploy:
+    image: pactfoundation/pact-cli
+    depends_on:
+      - pact-broker
+    environment:
+      PACT_BROKER_BASE_URL: http://35.244.100.200
+      PACT_BROKER_USERNAME: CSPUsr2
+      PACT_BROKER_PASSWORD: Password1
 #      SSL_CERT_FILE: /tmp/cacert.crt
 #    volumes:
 #      - ${PWD}/ssl/nginx-selfsigned.crt:/tmp/cacert.crt
-#    command: broker can-i-deploy --pacticipant "Example App" --latest
+    command: broker can-i-deploy --pacticipant "Example App" --latest
 
 #  nginx:
 #    image: nginx:1.15-alpine
